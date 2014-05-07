@@ -37,7 +37,7 @@ Basically Tabs can be inserted anywhere in your site
 
 If you need to further style a tab here are your options:
 
-* Each tab shortcode has it’s unique CSS class that can be used to style all tabs.
+* Each tab shortcode has it's unique CSS class that can be used to style all tabs.
 * Create a new class for each instance of a tab shortcode in its interface so you can style it individually.
 
 **Localization/Internationalization**
@@ -49,12 +49,12 @@ This plugin comes Localization/Internationalization ready. It is following WordP
 Upgrade to the full version of [Content Manager](http://otwthemes.com/product/content-manager-for-wordpress/?utm_source=wp.org&utm_medium=page&utm_content=upgrade&utm_campaign=cml) |
 [Demo site](http://otwthemes.com/demos/1ts/?item=Content%20Manager&utm_source=wp.org&utm_medium=page&utm_content=upgrade&utm_campaign=cml) 
 
-* Custom Responsive Layouts – Build in Seconds
-* Front-end Editor – Edit your layouts and content in the front-end of your site
+* Custom Responsive Layouts - Build in Seconds
+* Front-end Editor - Edit your layouts and content in the front-end of your site
 * 40+ Shortcodes with add/edit Interface, Custom and Imported Shortcodes
-* Insert Shortcodes Anywhere – Layouts, Page Editor, Sidebars, Template files
-* Insert Sidebars Anywhere – Layouts, Page Editor, Template files
-* WordPress Widgets Anywhere – Layouts, Page Editor, Template files
+* Insert Shortcodes Anywhere - Layouts, Page Editor, Sidebars, Template files
+* Insert Sidebars Anywhere - Layouts, Page Editor, Template files
+* WordPress Widgets Anywhere - Layouts, Page Editor, Template files
 * Content Sidebars
 * Support and Updates
 * Zero Coding Required
