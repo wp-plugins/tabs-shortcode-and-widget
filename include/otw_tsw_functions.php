@@ -78,6 +78,8 @@ if( !function_exists( 'otw_tsw_init' ) ){
 if( !function_exists( 'otw_tsw_enqueue_styles' ) ){
 	function otw_tsw_enqueue_styles(){
 		global $otw_tsw_plugin_url, $otw_tsw_css_version;
+		
+		
 	}
 }
 

@@ -16,9 +16,7 @@ class OTW_Shortcode_TabsLayout extends OTW_Shortcodes{
 		$this->add_external_lib( 'css', 'otw-shortcode-social_foundicons', $this->component_url.'css/social_foundicons.css', 'all', 20 );
 		$this->add_external_lib( 'css', 'otw-shortcode-jquery-ui', $this->component_url.'css/jquery-ui-1.9.1.css', 'all', 30 );
 		
-		
 		$this->add_external_lib( 'css', 'otw-shortcode', $this->component_url.'css/otw_shortcode.css', 'all', 100 );
-
 		
 		$this->add_external_lib( 'js', 'otw-shortcode-core', $this->component_url.'js/otw_shortcode_core.js', 'all', 99, array( 'jquery' ) );
 		$this->add_external_lib( 'js', 'otw-shortcode', $this->component_url.'js/otw_shortcode.js', 'front', 100 );

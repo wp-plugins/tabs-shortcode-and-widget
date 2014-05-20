@@ -203,3 +203,7 @@
 .otw-ws-content{
 	margin-bottom: 10px;
 }
+
+.otw-clear{
+	clear: both;
+}

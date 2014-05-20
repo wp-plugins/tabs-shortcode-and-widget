@@ -4,7 +4,7 @@ Plugin Name: Tabs Shortcode And Widgets
 Plugin URI: http://OTWthemes.com
 Description:  Create Tabs. Nice and easy interface. Insert anywhere in your site - page/post editor, sidebars, template files. 
 Author: OTWthemes.com
-Version: 1.0
+Version: 1.1
 
 Author URI: http://themeforest.net/user/OTWthemes
 */

@@ -276,14 +276,14 @@ class OTW_Shortcode extends OTW_Component{
 		if( $shortcode ){
 			
 			$content  = "\n<div style=\"min-height:100%; position:relative; overflow: hidden; background-color: #fff;\">";
-			$content .= "\n<div class=\"clear\" id=\"otw-shortcode-editor-buttons\">
+			$content .= "\n<div class=\"otw-clear\" id=\"otw-shortcode-editor-buttons\">
 					<div class=\"alignleft\">
 						<input type=\"button\" accesskey=\"C\" value=\"".$this->get_label('Cancel')."\" name=\"cancel\" class=\"button\" id=\"otw-shortcode-btn-cancel\">
 					</div>
 					<div class=\"alignright\">
 						<input type=\"button\" accesskey=\"I\" value=\"".$this->get_label('Insert')."\" name=\"insert\" class=\"button-primary\" id=\"otw-shortcode-btn-insert\">
 					</div>
-					<div class=\"clear\"></div>
+					<div class=\"otw-clear\"></div>
 					</div>";
 					
 			if( isset( $this->shortcodes[ $_GET['shortcode'] ]['object']->dialog_text ) && strlen( $this->shortcodes[ $_GET['shortcode'] ]['object']->dialog_text ) ){
@@ -339,14 +339,14 @@ class OTW_Shortcode extends OTW_Component{
 				$content .= "&nbsp;";
 			}
 
-			$content .= "\n<div class=\"clear\" id=\"otw-shortcode-editor-buttons-bottom\">
+			$content .= "\n<div class=\"otw-clear\" id=\"otw-shortcode-editor-buttons-bottom\">
 						<div class=\"alignleft\">
 							<input type=\"button\" accesskey=\"C\" value=\"".$this->get_label('Cancel')."\" name=\"cancel\" class=\"button\" id=\"otw-shortcode-btn-cancel-bottom\">
 						</div>
 						<div class=\"alignright\">
 							<input type=\"button\" accesskey=\"I\" value=\"".$this->get_label('Insert')."\" name=\"insert\" class=\"button-primary\" id=\"otw-shortcode-btn-insert-bottom\">
 						</div>
-						<div class=\"clear\"></div>
+						<div class=\"otw-clear\"></div>
 					</div>";
 			$content .= "\n</div>";
 			echo $content;
