@@ -83,7 +83,7 @@ Please refer to [online documentation page](http://otwthemes.com/online-document
 
 = 1.3 =
 
-* Fixed: Adjustments on the options popup window
+* Fixed: Adjustments on the options popup window 
 
 = 1.2 =
 
