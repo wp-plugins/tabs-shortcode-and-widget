@@ -115,7 +115,7 @@
 	margin: 0px;
 }
 .otw-shortcode-editor-preview{
-	padding-top: 20px;
+
 }
 .otw-shortcode-editor-body th{
 	border-bottom: 1px solid #E7E7E7;
@@ -203,7 +203,20 @@
 .otw-ws-content{
 	margin-bottom: 10px;
 }
-
+.otw-html-area-holder{
+	height: 260px;
+	clear: both;
+}
+.otw-tmce-form-control{
+	width: 500px;
+	height: 80px;
+	display: none;
+}
+.otw-tmce-form-control .wp-editor-area{
+	border: 1px solid #DDDDDD;
+	border-top: none;
+	max-height: 120px;
+}
 .otw-clear{
 	clear: both;
 }

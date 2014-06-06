@@ -10,6 +10,6 @@ Author URI: http://themeforest.net/user/OTWthemes
 
 $otw_component = array();
 $otw_component['name']       = 'OTW Form';
-$otw_component['version']    = '1000.2';
+$otw_component['version']    = '1000.1';
 $otw_component['class_name'] = 'OTW_Form';
 ?>

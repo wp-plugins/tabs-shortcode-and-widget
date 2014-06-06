@@ -137,9 +137,16 @@ otw_shortcode_object.prototype.init_dropdown_actions = function(){
 										}
 										jQuery( '#TB_ajaxContent' ).css( 'width', '950px' );
 										jQuery( '#TB_ajaxContent' ).css( 'padding', '0' );
-										
+										otw_setup_html_areas();
 									}
-									
+									if( typeof( otw_tb_remove ) == 'undefined' ){
+										otw_tb_remove = window.tb_remove;
+										tb_remove = function(){
+											
+											otw_close_html_areas();
+											otw_tb_remove();
+										}
+									}
 									var f=jQuery(window).width();
 									b=jQuery(window).height();
 									f=1000<f?1000:f;
@@ -194,8 +201,103 @@ otw_shortcode_editor_object = function( type ){
 	
 	this.init_html_areas();
 };
+function otw_close_html_areas(){
+
+	var areas = jQuery( '.otw-html-area-holder' );
+	
+	for( var cA = 0; cA < areas.size(); cA++ ){
+		
+		var id_matches = false;
+		
+		if( id_matches = areas[cA].id.match( /^otw\-shortcode\-element\-(.*)\-holder$/ ) ){
+			
+			var editor_node = jQuery( '#otw-shortcode-element-' + id_matches[1] + '_tmce-form-control' )
+			
+			editor_node.hide();
+		}
+	}
+}
+function otw_setup_html_areas(){
+
+	var areas = jQuery( '.otw-html-area-holder' );
+	
+	if( jQuery( '#TB_window' ).size() ){
+		
+		for( var cA = 0; cA < areas.size(); cA++ ){
+			
+			var id_matches = false;
+			
+			if( id_matches = areas[cA].id.match( /^otw\-shortcode\-element\-(.*)\-holder$/ ) ){
+				
+				var editor_node = jQuery( '#otw-shortcode-element-' + id_matches[1] + '_tmce-form-control' )
+				
+				var ivalue = jQuery( '#otw-shortcode-element-' + id_matches[1] ).val();
+				
+				jQuery( '#TB_ajaxContent' ).css( 'overflow', 'visible' );
+				
+				editor_node.css( 'position', 'fixed' );
+				editor_node.css( 'display', 'block' );
+				editor_node.css( 'top', ( jQuery( '#TB_window' ).position().top - ( TB_HEIGHT / 2  ) ) + jQuery( areas[cA] ).position().top + 20 + 'px' );
+				editor_node.css( 'left', ( jQuery( '#TB_window' ).offset().left + 40 )  + 'px');
+				editor_node.css( 'z-index', '4000000' );
+				
+				if( typeof tinymce != "undefined" ) {
+					
+					var editor = tinymce.get( 'otw-shortcode-element-' + id_matches[1] + '_tmce' );
+					
+					if( editor && editor instanceof tinymce.Editor ) {
+						
+						var editor = tinymce.get( 'otw-shortcode-element-' + id_matches[1] + '_tmce' );
+						editor.setContent( ivalue );
+						
+						if( jQuery( '#otw-shortcode-element-' + id_matches[1] ).attr( 'data-loaded' ) != 1 ){
+							
+							editor.onChange.add( function(){
+								jQuery( '#otw-shortcode-element-' + id_matches[1] ).val( editor.getContent() );
+								otw_shortcode_editor.live_preview();
+							} );
+						}
+						editor.save( { no_events: true } );
+						jQuery( '#otw-shortcode-element-' + id_matches[1] ).attr( 'data-loaded', 1 );
+						
+					}else{
+						jQuery( '#otw-shortcode-element-' + id_matches[1]  + '_tmce' ).val( ivalue );
+					}
+					jQuery( '#otw-shortcode-element-' + id_matches[1]  + '_tmce' ).unbind( 'change' );
+					jQuery( '#otw-shortcode-element-' + id_matches[1]  + '_tmce' ).change( function(){
+					
+						var editor = tinymce.get( 'otw-shortcode-element-' + id_matches[1] + '_tmce' );
+						
+						jQuery( '#otw-shortcode-element-' + id_matches[1] ).val( this.value );
+						otw_shortcode_editor.live_preview();
+					} );
+					
+					if( jQuery( '#otw-shortcode-element-' + id_matches[1] ).attr( 'data-loaded' ) != 1 ){
+						
+						jQuery( '#wp-otw-shortcode-element-' + id_matches[1]  + '_tmce-wrap' ).bind( 'DOMSubtreeModified', function(){
+						
+							if( jQuery( '#otw-shortcode-element-' + id_matches[1] ).attr( 'data-loaded' ) != 1 ){
+								var editor = tinymce.get( 'otw-shortcode-element-' + id_matches[1] + '_tmce' );
+								
+								if( editor && editor instanceof tinymce.Editor ) {
+									editor.onChange.add( function(){
+										jQuery( '#otw-shortcode-element-' + id_matches[1] ).val( editor.getContent() );
+										otw_shortcode_editor.live_preview();
+									} );
+									jQuery( '#otw-shortcode-element-' + id_matches[1] ).attr( 'data-loaded', 1 );
+								}
+							}
+						});
+					}
+				}
+				
+			}
+		}
+	}
+}
 otw_shortcode_editor_object.prototype.init_html_areas = function(){
 	
+	return;
 	var areas = jQuery( '.otw-html-area' );
 	
 	for( var cA = 0; cA < areas.size(); cA++ ){
@@ -203,15 +305,53 @@ otw_shortcode_editor_object.prototype.init_html_areas = function(){
 		var textfield_id = areas[ cA ].value;
 		
 		if( jQuery( '#' + textfield_id ).size() ){
-//			window.tinyMCEPreInit.mceInit[textfield_id]=_.extend({},tinyMCEPreInit.mceInit['content']);
+		
+		/*
 			if( typeof( window.tinyMCEPreInit ) != 'undefined' ){
-				window.tinyMCEPreInit.mceInit[textfield_id]={};
+				
+				
+				window.tinyMCEPreInit.mceInit[textfield_id] = {};
+				var init = window.tinyMCEPreInit.mceInit[textfield_id] = tinymce.extend( {}, tinyMCEPreInit.mceInit[ 'content' ] );//new
+				window.tinyMCEPreInit.mceInit[textfield_id].selector = '#'+textfield_id;
+				window.tinyMCEPreInit.mceInit[textfield_id].external_plugins = {};
 				window.tinyMCEPreInit.mceInit[textfield_id].setup = function(ed) {
 					ed.onChange.add(function(ed, l) {
 						jQuery( '#' + textfield_id ).val( l.content );
 						jQuery( '#' + textfield_id ).change();
 						});
 					};
+				wrapper = tinymce.DOM.select( '#wp-' + textfield_id + '-wrap' )[0];
+				
+				
+				
+				window.tinyMCEPreInit.qtInit[textfield_id]=_.extend({},tinyMCEPreInit.qtInit['replycontent'],{id:textfield_id})
+				qt=quicktags(window.tinyMCEPreInit.qtInit[textfield_id]);
+				QTags._buttonsInit();
+				
+				if ( ( tinymce.DOM.hasClass( wrapper, 'tmce-active' ) || ! tinyMCEPreInit.qtInit.hasOwnProperty( textfield_id ) ) ) {
+
+						try {
+							tinymce.init( init );
+
+							if ( ! window.wpActiveEditor ) {
+								window.wpActiveEditor = edId;
+							}
+						} catch(e){}
+					}
+				
+				window.switchEditors.go(textfield_id,'tmce');
+				
+				tinymce.execCommand('mceAddControl', false, textfield_id);
+				
+			}
+			*/
+//			window.tinyMCEPreInit.mceInit[textfield_id]=_.extend({},tinyMCEPreInit.mceInit['content']);
+			if( typeof( window.tinyMCEPreInit ) != 'undefined' ){
+			
+				window.tinyMCEPreInit.mceInit[textfield_id]={};
+				window.tinyMCEPreInit.mceInit[textfield_id] = tinymce.extend( {}, tinyMCEPreInit.mceInit[ 'content' ] );//new
+				
+				try { tinymce.init( window.tinyMCEPreInit.mceInit[textfield_id] ); } catch(e){ }//new
 				window.tinyMCEPreInit.qtInit[textfield_id]=_.extend({},tinyMCEPreInit.qtInit['replycontent'],{id:textfield_id})
 				qt=quicktags(window.tinyMCEPreInit.qtInit[textfield_id]);
 				QTags._buttonsInit();
@@ -368,6 +508,7 @@ otw_shortcode_editor_object.prototype.get_values = function(){
 	
 		var matches = false;
 		if( matches = field.match( /^otw\-shortcode\-element\-([a-z0-9\_\-]+)$/ ) ){
+			
 			switch( otw_shortcode_editor.fields[ field ].element_type ){
 				
 				case 'checkbox':
@@ -376,6 +517,34 @@ otw_shortcode_editor_object.prototype.get_values = function(){
 							v_code[ matches[1] ] = otw_shortcode_editor.fields[ field ].current_value;
 						}else{
 							v_code[ matches[1] ] = '';
+						}
+					break;
+				case 'text_area':
+						
+						if( ( otw_shortcode_editor.fields[ field ].element.attr( 'data-type' ) == 'tmce' ) && ( otw_shortcode_editor.fields[ field ].element.attr( 'data-loaded' ) == 1 ) ){
+						
+							if( tinyMCE.get( 'otw-shortcode-element-' + matches[1] + '_tmce' ) != null ){
+								
+								var textArea = jQuery( '#otw-shortcode-element-' + matches[1] + '_tmce' );
+								
+								if( ( textArea.length > 0 ) && textArea.is(':visible') ){
+									v_code[ matches[1] ] = textArea.val();
+								}else{
+									v_code[ matches[1] ] = tinyMCE.get( 'otw-shortcode-element-' + matches[1] + '_tmce' ).getContent();
+								}
+								otw_shortcode_editor.fields[ field ].element.val( v_code[ matches[1] ] );
+								
+							}else if( jQuery( '#otw-shortcode-element-' + matches[1] + '_tmce' ).size() ){
+								
+								v_code[ matches[1] ] = jQuery( '#otw-shortcode-element-' + matches[1] + '_tmce' ).val();
+								otw_shortcode_editor.fields[ field ].element.val( v_code[ matches[1] ] );
+							}else{
+								
+								v_code[ matches[1] ] = otw_shortcode_editor.fields[ field ].current_value;
+							}
+							
+						}else{
+							v_code[ matches[1] ] = otw_shortcode_editor.fields[ field ].current_value;
 						}
 					break;
 				default:
@@ -485,6 +654,7 @@ otw_shortcode_editor_object.prototype.init_fields = function(){
 		} );
 
 	};
+	
 	this.live_preview();
 };
 
