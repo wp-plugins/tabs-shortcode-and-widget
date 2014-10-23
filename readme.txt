@@ -3,7 +3,7 @@ Contributors: OTWthemes
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CQH6CMTR42KS2
 Tags: tabs, tab, shortcode, widgets, WYSIWYG editor, widget, sidebar
 Requires at least: 3.6
-Tested up to: 3.9.1
+Tested up to: 4.0
 Stable tag: 1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -31,7 +31,7 @@ Basically Tabs can be inserted anywhere in your site
 
 * Page/post WYSIWYG editor by using the buttion in the editor
 * In sidebars by using the OTW Shortcode Widget
-* In template files by using the tab's shortcode and WP do_shortcode function
+* In template files by using the tab's shortcode and WordPress do_shortcode function
 
 **Custom styling**
 
