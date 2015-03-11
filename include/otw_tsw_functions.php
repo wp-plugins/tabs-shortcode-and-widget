@@ -93,7 +93,16 @@ if( !function_exists( 'otw_tsw_enqueue_admin_styles' ) ){
 		
 		global $otw_tsw_plugin_url, $otw_tsw_css_version;
 		
-		wp_enqueue_style( 'otw_tsw_admin', $otw_tsw_plugin_url.'/css/otw_tsw_admin.css', array( 'thickbox' ), $otw_tsw_css_version );
+		$currentScreen = get_current_screen();
+		
+		switch( $currentScreen->id ){
+			
+			case 'widgets':
+			case 'page':
+			case 'post':
+					wp_enqueue_style( 'otw_tsw_admin', $otw_tsw_plugin_url.'/css/otw_tsw_admin.css', array( 'thickbox' ), $otw_tsw_css_version );
+				break;
+		}
 	}
 }
 
