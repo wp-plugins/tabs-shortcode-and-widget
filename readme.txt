@@ -12,7 +12,7 @@ Create Tabs. Nice and easy interface. Insert anywhere in your site - page/post e
 
 == Description ==
 
-Easily create different kinds of Tabs for your WordPress site, vertical or horizontal. Insert Tabs anywhere in your site - page/post editor, sidebars, template files. No coding is required. It is all done in a nice and easy interface.
+Easily create different kinds of Tabs for your WordPress site, vertical or horizontal. Insert Tabs anywhere in your site - page / post editor, sidebars, template files. No coding is required. It is all done in a nice and easy interface.
 
 **Tabs Options**
 
