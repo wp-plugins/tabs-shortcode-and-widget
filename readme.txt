@@ -12,7 +12,7 @@ Create Tabs. Nice and easy interface. Insert anywhere in your site - page/post e
 
 == Description ==
 
-Easily create different kinds of Tabs for your WordPress site, vertical or horizontal. Insert Tabs anywhere in your site - page / post editor, sidebars, template files. No coding is required. It is all done in a nice and easy interface.
+Easily create different kinds of Tabs for your WordPress site, vertical or horizontal. Insert Tabs anywhere in your site - page/post editor, sidebars, template files. No coding is required. It is all done in a nice and easy interface.
 
 **Tabs Options**
 
@@ -46,7 +46,7 @@ This plugin comes Localization/Internationalization ready. It is following WordP
 
 **Full version of the plugin**
 
-Upgrade to the full version of [Content Manager](http://otwthemes.com/product/content-manager-for-wordpress/?utm_source=wp.org&utm_medium=page&utm_content=upgrade&utm_campaign=cml) |
+Upgrade to the full version of [Content Manager](http://codecanyon.net/item/content-manager-for-wordpress/7431829?ref=OTWthemes) |
 [Demo site](http://otwthemes.com/demos/1ts/?item=Content%20Manager&utm_source=wp.org&utm_medium=page&utm_content=upgrade&utm_campaign=cml) 
 
 * Custom Responsive Layouts - Build in Seconds
